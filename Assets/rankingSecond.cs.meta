@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4fc6d1128d14b6f408a1560270105d42
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - imageRanking1: {fileID: 21300000, guid: c600dd743569f4ab1884c8f5943e0929, type: 3}
+  - imageRanking2: {fileID: 21300000, guid: 9eff6539861ac4ab9a407b62b54ca76f, type: 3}
+  - imageRanking3: {fileID: 21300000, guid: 5b72c1dae2cfa4aad929cc95231985be, type: 3}
+  - placeSecond: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
