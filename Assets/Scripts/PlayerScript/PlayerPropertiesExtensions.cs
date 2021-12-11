@@ -8,7 +8,7 @@ public static class PlayerPropertiesExtensions
 {
     private const string ScoreKey = "Score";
     private const string MessageKey = "Message";
-    private static int numCounter;
+    private const string InLastScene = "InLastScene";
 
     private static readonly ExitGames.Client.Photon.Hashtable propsToSet = new ExitGames.Client.Photon.Hashtable();
 
@@ -38,17 +38,17 @@ public static class PlayerPropertiesExtensions
         propsToSet.Clear();
     }
 
-    public static void AddRoomMemberNum(this Player player){
-        numCounter ++;
+    public static bool GetInLastScene(this Player player) {
+        return (player.CustomProperties[InLastScene] is bool isIn) ? isIn : false;
     }
 
-    public static void RemoveRoomMemberNum(this Player player){
-        numCounter --;
+
+    public static void SetInLastScene(this Player player) {
+        propsToSet[InLastScene] = true;
+        player.SetCustomProperties(propsToSet);
+        propsToSet.Clear();
     }
 
-    public static int GetRoomMemberNum(this Player player){
-        return numCounter;
-    }
 }
 
 /*

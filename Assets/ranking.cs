@@ -19,8 +19,9 @@ public class ranking : MonoBehaviourPunCallbacks
     private PhotonView myPV;
     private int roomPlayerNumber;
     private GameObject playerPrefab;
-    private static bool flag = false;
+    private static bool flag = true;
     private Dictionary<string, int> playerList;
+    
 
 
     void Awake() {
@@ -40,50 +41,61 @@ public class ranking : MonoBehaviourPunCallbacks
         player.transform.SetParent(canvas_obj.transform);
         myPV = player.gameObject.GetComponent<PhotonView>();
         Debug.Log("entered!:"+PhotonNetwork.LocalPlayer.NickName);
-        PhotonNetwork.LocalPlayer.AddRoomMemberNum();
-        // if (myPV.IsMine) {
-        //     playerNumber++;
-        //     Debug.Log("player number+1");
-        // }
         playerList = new Dictionary<string, int>();
-
+        PhotonNetwork.LocalPlayer.SetInLastScene();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        var currentMemberNum = PhotonNetwork.LocalPlayer.GetRoomMemberNum();
-        Debug.Log(currentMemberNum + "/ " + roomPlayerNumber);
-        if (currentMemberNum == roomPlayerNumber)
-        {
-            rank();
+        if (flag){
+            bool counterFlag = true;
+            int currentMemberNum = 0;
+            foreach (var targetPlayer in PhotonNetwork.CurrentRoom.Players.Values)
+            {
+                counterFlag = counterFlag && targetPlayer.GetInLastScene();
+                if (counterFlag == false){
+                    break;
+                }
+                currentMemberNum++;
+            }
+            if (currentMemberNum == roomPlayerNumber)
+            {
+                flag = false;
+                rank();
+            }
         }
+        
     }
     public void rank()
     {
+        List<int> scoreList = new List<int>();
+        List<string> nameList = new List<string>();
         Debug.Log("we are in rank");
         //iterate through all player to update score
         //if no entry exists create one
-        //var playerList = PhotonNetwork.CurrentRoom.playerList;
-        // foreach (var targetPlayer in PhotonNetwork.CurrentRoom.Players.Values)
-        // {
-        //     playerList.Add(targetPlayer.NickName, targetPlayer.GetScore());
+        // playerList = PhotonNetwork.CurrentRoom.playerList;
+        foreach (var targetPlayer in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            playerList.Add(targetPlayer.NickName, targetPlayer.GetScore());
             
-        // }
-        // var SortedplayerList =  playerList.OrderByDescending((x) => x.Value);
+        }
+        var sortedPlayerDict =  playerList.OrderByDescending((x) => x.Value);
 
-        // foreach (var value in SortedplayerList)
-        // {
-        //    Debug.Log(value);
-        // }
+        foreach (var value in sortedPlayerDict)
+        {
+           Debug.Log(value);
+           scoreList.Add(value.Value);
+           nameList.Add(value.Key);
+        }
 
 
+        
 
-/*        if (roomPlayerNumber == 3) {
-            if (sortedPlayerList[1].GetScore() == sortedPlayerList[0].GetScore()) {
+        if (roomPlayerNumber == 3) {
+            if (scoreList[1] == scoreList[0]) {
                 placeSecond.sprite = imageRanking1;
-                if (sortedPlayerList[2].GetScore() == sortedPlayerList[1].GetScore()) {
+                if (scoreList[2] == scoreList[1]) {
                     placeThird.sprite = imageRanking1;
                 }
                 else {
@@ -92,7 +104,7 @@ public class ranking : MonoBehaviourPunCallbacks
             }
             else {
                 placeSecond.sprite = imageRanking2;
-                if (sortedPlayerList[2].GetScore() == sortedPlayerList[1].GetScore()) {
+                if (scoreList[2]== scoreList[1]) {
                     placeThird.sprite = imageRanking2;
                 }
                 else {
@@ -102,7 +114,7 @@ public class ranking : MonoBehaviourPunCallbacks
         }
         else if (roomPlayerNumber == 2) {
             placeThird.gameObject.SetActive(false);
-            if (sortedPlayerList[1].GetScore() == sortedPlayerList[0].GetScore()) {
+            if (scoreList[1] == scoreList[0]) {
                 placeSecond.sprite = imageRanking1; }
             else {
                 placeSecond.sprite = imageRanking2;
@@ -111,19 +123,7 @@ public class ranking : MonoBehaviourPunCallbacks
         else {
             placeThird.gameObject.SetActive(false);
             placeSecond.gameObject.SetActive(false);
-        }*/
-        /*       {
-                    var targetEntry = m_entries.Find(x => x.Player == targetPlayer);
-
-                    if (targetEntry == null)
-                    {
-                        targetEntry = CreateNewEntry(targetPlayer);
-                    }
-
-                    targetEntry.UpdateScore();
-                }
-
-                SortEntries();*/
-
+        }
+        
     }
 }
