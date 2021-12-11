@@ -12,11 +12,12 @@ public class ButtonTest : MonoBehaviour
         Debug.Log("押された!");  // ログを出力
     }
 
-        // エディタのインスペクタで、この変数にヒエラルキーにある Canvas を割り当ててください。
+    // エディタのインスペクタで、この変数にヒエラルキーにある Canvas を割り当ててください。
     public Canvas canvasConfirmationEndGame = null;
 
     // Use this for initialization ここまでok
-    void Start() {
+    void Start()
+    {
         // ダイアログを表示するときまで、 Canvas を無効にしておく。
         if (canvasConfirmationEndGame != null)
         {
@@ -25,7 +26,7 @@ public class ButtonTest : MonoBehaviour
     }
 
     // クリックされた
-    void OnMouseUpAsButton()
+    public void OnMouseUpAsButton()
     {
         Debug.Log("押された１１!");  // ログを出力
         ConfirmationEndGame();
@@ -54,6 +55,6 @@ public class ButtonTest : MonoBehaviour
     {
         // Canvas を無効にする。(ダイアログを閉じる)
         Debug.Log("Yes押された!");  // ログを出力
-        SceneManager.LoadScene ("startScene"); //一番初めの画面へ戻る
+        SceneManager.LoadScene("startScene"); //一番初めの画面へ戻る
     }
 }

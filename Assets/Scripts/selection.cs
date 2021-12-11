@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 
 public class selection : MonoBehaviour
@@ -64,12 +66,18 @@ public class selection : MonoBehaviour
         int correct_counter = 0;
         int total_ing_num = ingredients_ans.Count;
         foreach (string ing in ingredients_ans){
-            if (ingredients_activation[ing] == true){
-                correct_counter ++;
+            if (ingredients_activation[ing] == true)
+            {
+                correct_counter++;
             }
+            else {
+                correct_counter--;
+            }
+            PhotonNetwork.LocalPlayer.AddScore(correct_counter*10);
         }
         
         Debug.Log(correct_counter.ToString() + "/"+ total_ing_num.ToString());
+        Debug.Log(PhotonNetwork.LocalPlayer.GetScore().ToString());
         
     }
 }
