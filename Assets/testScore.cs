@@ -8,7 +8,7 @@ using Photon.Realtime;
 public class testScore : MonoBehaviour
 {
     void Awake(){
-        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.AutomaticallySyncScene = false;
     }
     public void onButtonAdd()
     {
