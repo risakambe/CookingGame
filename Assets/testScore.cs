@@ -7,6 +7,9 @@ using Photon.Realtime;
 
 public class testScore : MonoBehaviour
 {
+    void Awake(){
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
     public void onButtonAdd()
     {
         PhotonNetwork.LocalPlayer.AddScore(10);
@@ -26,7 +29,7 @@ public class testScore : MonoBehaviour
 
     public void ranking()
     {
-        SceneManager.LoadSceneAsync("rankingScene");
+        PhotonNetwork.LoadLevel("rankingScene");
     }
 
 }

@@ -22,13 +22,15 @@ public class ranking : MonoBehaviourPunCallbacks
 
 
     void Awake() {
-        var roomPlayerNumber = PhotonNetwork.CurrentRoom.PlayerCount;
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        roomPlayerNumber = PhotonNetwork.CurrentRoom.PlayerCount;
         GameObject canvas_obj = GameObject.Find("Canvas");
 
         playerPrefab = Resources.Load("player", typeof(GameObject)) as GameObject;
@@ -46,10 +48,10 @@ public class ranking : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (playerNumber == roomPlayerNumber)
-        {
-            rank();
-        }
+        // if (playerNumber == roomPlayerNumber)
+        // {
+        //     rank();
+        // }
     }
     public void rank()
     {
