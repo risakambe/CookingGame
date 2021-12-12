@@ -24,6 +24,7 @@ public class ranking : MonoBehaviourPunCallbacks
     public Text name1;
     public Text name2;
     public Text name3;
+    [SerializeField] GameObject messagePanel;
 
 
 
@@ -61,10 +62,12 @@ public class ranking : MonoBehaviourPunCallbacks
                     break;
                 }
                 currentMemberNum++;
+                messagePanel.SetActive(true);
             }
             if (currentMemberNum == roomPlayerNumber)
             {
                 flag = false;
+                messagePanel.SetActive(false);
                 rank();
             }
         }
