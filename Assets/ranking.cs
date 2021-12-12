@@ -21,7 +21,10 @@ public class ranking : MonoBehaviourPunCallbacks
     private GameObject playerPrefab;
     private static bool flag = true;
     private Dictionary<string, int> playerList;
-    
+    public Text name1;
+    public Text name2;
+    public Text name3;
+
 
 
     void Awake() {
@@ -65,8 +68,8 @@ public class ranking : MonoBehaviourPunCallbacks
                 rank();
             }
         }
-        
     }
+
     public void rank()
     {
         List<int> scoreList = new List<int>();
@@ -87,12 +90,12 @@ public class ranking : MonoBehaviourPunCallbacks
            Debug.Log(value);
            scoreList.Add(value.Value);
            nameList.Add(value.Key);
-        }
-
-
-        
+        }        
 
         if (roomPlayerNumber == 3) {
+            name1.text = nameList[0];
+            name2.text = nameList[1];
+            name3.text = nameList[2];
             if (scoreList[1] == scoreList[0]) {
                 placeSecond.sprite = imageRanking1;
                 if (scoreList[2] == scoreList[1]) {
@@ -113,6 +116,9 @@ public class ranking : MonoBehaviourPunCallbacks
             }
         }
         else if (roomPlayerNumber == 2) {
+            name1.text = nameList[0];
+            name2.text = nameList[1];
+            name3.enabled = false;
             placeThird.gameObject.SetActive(false);
             if (scoreList[1] == scoreList[0]) {
                 placeSecond.sprite = imageRanking1; }
@@ -121,6 +127,9 @@ public class ranking : MonoBehaviourPunCallbacks
             }
         }
         else {
+            name1.text = nameList[0];
+            name2.enabled = false;
+            name3.enabled = false;
             placeThird.gameObject.SetActive(false);
             placeSecond.gameObject.SetActive(false);
         }

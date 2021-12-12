@@ -31,5 +31,4 @@ public class testScore : MonoBehaviour
     {
         PhotonNetwork.LoadLevel("rankingScene");
     }
-
 }
