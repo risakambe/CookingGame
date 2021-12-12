@@ -5,9 +5,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 
-public class selection : MonoBehaviour
+public class selection : MonoBehaviourPunCallbacks
 {
     private  EventSystem eventSystem;
     private List<string> ingredients = new List<string> (){
@@ -26,10 +29,12 @@ public class selection : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake(){
+        PhotonNetwork.AutomaticallySyncScene = false;
         eventSystem=EventSystem.current;
     }
     void Start()
     {
+        
         foreach (string ing in ingredients){
             ingredients_activation.Add(ing,false); 
             Button ing_button = this.transform.Find("Scroll View/Viewport/Content/"+ing).gameObject.GetComponent<Button>();
@@ -78,6 +83,6 @@ public class selection : MonoBehaviour
         
         Debug.Log(correct_counter.ToString() + "/"+ total_ing_num.ToString());
         Debug.Log(PhotonNetwork.LocalPlayer.GetScore().ToString());
-        
+        SceneManager.LoadScene("rankingScene");
     }
 }

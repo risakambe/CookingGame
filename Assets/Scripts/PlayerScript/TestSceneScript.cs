@@ -18,11 +18,11 @@ public class TestSceneScript : MonoBehaviourPunCallbacks
         }
 
 
-        GameObject canvas_obj = GameObject.Find("Canvas");
+        // GameObject canvas_obj = GameObject.Find("Canvas");
 
-        playerPrefab = Resources.Load("player",  typeof(GameObject)) as GameObject;
-        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, canvas_obj.transform.position, Quaternion.identity, 0);
-        player.transform.SetParent(canvas_obj.transform);
+        // playerPrefab = Resources.Load("player",  typeof(GameObject)) as GameObject;
+        // GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, canvas_obj.transform.position, Quaternion.identity, 0);
+        // player.transform.SetParent(canvas_obj.transform);
     }
  
     // Update is called once per frame

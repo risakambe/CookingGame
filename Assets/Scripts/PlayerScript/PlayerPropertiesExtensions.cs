@@ -49,6 +49,12 @@ public static class PlayerPropertiesExtensions
         propsToSet.Clear();
     }
 
+    public static void ResetInLastScene(this Player player) {
+        propsToSet[InLastScene] = false;
+        player.SetCustomProperties(propsToSet);
+        propsToSet.Clear();
+    }
+
 }
 
 /*
