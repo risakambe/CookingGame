@@ -8,6 +8,7 @@ public static class PlayerPropertiesExtensions
 {
     private const string ScoreKey = "Score";
     private const string MessageKey = "Message";
+    private const string InLastScene = "InLastScene";
 
     private static readonly ExitGames.Client.Photon.Hashtable propsToSet = new ExitGames.Client.Photon.Hashtable();
 
@@ -36,6 +37,24 @@ public static class PlayerPropertiesExtensions
         player.SetCustomProperties(propsToSet);
         propsToSet.Clear();
     }
+
+    public static bool GetInLastScene(this Player player) {
+        return (player.CustomProperties[InLastScene] is bool isIn) ? isIn : false;
+    }
+
+
+    public static void SetInLastScene(this Player player) {
+        propsToSet[InLastScene] = true;
+        player.SetCustomProperties(propsToSet);
+        propsToSet.Clear();
+    }
+
+    public static void ResetInLastScene(this Player player) {
+        propsToSet[InLastScene] = false;
+        player.SetCustomProperties(propsToSet);
+        propsToSet.Clear();
+    }
+
 }
 
 /*

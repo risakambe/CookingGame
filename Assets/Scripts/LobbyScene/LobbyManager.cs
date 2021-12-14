@@ -75,7 +75,7 @@ namespace Com.MyCompany.MyGameMonoBehaviourPunCallbacks
         public override void OnCreatedRoom()
         {
             base.OnCreatedRoom();
-            PhotonNetwork.LoadLevel("Stage");
+            PhotonNetwork.LoadLevel("WaitScene");
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)

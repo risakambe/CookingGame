@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/rankingScene.unity
-    guid: e6f08436f0c9e49ff83c6aa526e54337
-  - enabled: 1
     path: Assets/Scenes/startScene.unity
     guid: 044a1c0ccc8dc4957a189bdefbab650b
   - enabled: 1
@@ -21,9 +18,27 @@ EditorBuildSettings:
     path: Assets/Scenes/mainScene.unity
     guid: 983bc7dc9ca1d41dc805ff17445090c6
   - enabled: 1
+    path: Assets/Scenes/WaitScene.unity
+    guid: b508321d0e03a934eaacf9496709d87e
+  - enabled: 1
     path: Assets/Scenes/selection.unity
     guid: 44c1b231f7c607f408ba2398dfb31eba
   - enabled: 1
+    path: Assets/Scenes/CookingScenes/PeelPotatoes.unity
+    guid: a02c3f2fb999cff4eb7578eee8ce000c
+  - enabled: 1
+    path: Assets/Scenes/CookingScenes/CutPotatoes.unity
+    guid: a7c2b21c456e5544a92d28bf170fd614
+  - enabled: 1
+    path: Assets/Scenes/CookingScenes/RoastChicken.unity
+    guid: cb296b457d95c484d920419499d9716e
+  - enabled: 1
+    path: Assets/Scenes/CookingScenes/StirYolk.unity
+    guid: 6945e29020c905743a3043c7bf908be7
+  - enabled: 0
     path: Assets/Scenes/Stage.unity
     guid: 11477c41e49e72b4a82666920f931332
+  - enabled: 1
+    path: Assets/Scenes/rankingScene.unity
+    guid: e6f08436f0c9e49ff83c6aa526e54337
   m_configObjects: {}
