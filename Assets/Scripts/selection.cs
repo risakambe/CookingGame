@@ -102,8 +102,8 @@ public class selection : MonoBehaviourPunCallbacks
         Debug.Log(correct_counter);
         //Debug.Log(correct_counter.ToString() + "/"+ total_ing_num.ToString());
         //Debug.Log(PhotonNetwork.LocalPlayer.GetScore().ToString());
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene("rankingScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene("rankingScene");
         
     }
 }
