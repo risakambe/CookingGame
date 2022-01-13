@@ -30,7 +30,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
     // クリックされた
     public void OnMouseUpAsButton()
     {
-        Debug.Log("押された１１!");  // ログを出力
+        Debug.Log("clicked!");  // ログを出力
         ConfirmationEndGame();
     }
 
@@ -48,6 +48,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
     public void onButtonYes()
     {
         Debug.Log("Yes押された!");  // ログを出力
+        PhotonNetwork.LocalPlayer.SetScore(0);
         PhotonNetwork.LocalPlayer.ResetInLastScene();
         // PhotonNetwork.LeaveRoom();
         

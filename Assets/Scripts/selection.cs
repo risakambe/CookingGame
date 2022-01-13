@@ -68,7 +68,6 @@ public class selection : MonoBehaviourPunCallbacks
         ingredients_activation[clicked_button_name] = !ingredients_activation[clicked_button_name];
     }
     void Select_enter_clicked(){ 
-        PhotonNetwork.LocalPlayer.SetScore(0);
         int correct_counter = 0;
         int total_ing_num = ingredients_ans.Count;
 
@@ -78,12 +77,12 @@ public class selection : MonoBehaviourPunCallbacks
             {
                 if (ingredients_ans.Contains(item.Key)) {
                     correct_counter++;
-                    Debug.Log("‚ ‚Á‚Ä‚¢‚é‚Æ‚«"+correct_counter.ToString());
+                    Debug.Log("correct:"+correct_counter.ToString());
                 }
                 else
                 {
                     correct_counter--;
-                    Debug.Log("ŠÔˆá‚Á‚Ä‚¢‚é‚Ì‚ð‘I‚ñ‚¾Žž" + correct_counter.ToString());
+                    Debug.Log("wrong:" + correct_counter.ToString());
                 }
                 
             }

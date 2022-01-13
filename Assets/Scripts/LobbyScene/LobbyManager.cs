@@ -56,13 +56,15 @@ namespace Com.MyCompany.MyGameMonoBehaviourPunCallbacks
  
             for (int i = 0; i < roomInfo.Count; i++)
             {
-                Debug.Log("room info count"+roomInfo.Count.ToString());
-                Debug.Log(roomInfo[i].Name + " : " + roomInfo[i].Name + "–" + roomInfo[i].PlayerCount + " / " + roomInfo[i].MaxPlayers /*+ roomInfo[i].CustomProperties["roomCreator"].ToString()*/);
-                RoomElementPrefab = Resources.Load("RoomElement",  typeof(GameObject)) as GameObject;
-                GameObject RoomElement = GameObject.Instantiate(RoomElementPrefab);
-                RoomElement.transform.SetParent(RoomParent.transform);
-                Debug.Log("GetRoomInfo in updater:" + roomInfo[i].Name);
-                RoomElement.GetComponent<RoomElement>().SetRoomInfo(roomInfo[i].Name, roomInfo[i].PlayerCount, roomInfo[i].MaxPlayers, roomInfo[i].CustomProperties["RoomCreator"].ToString());
+                // Debug.Log("room info count"+roomInfo.Count.ToString());
+                if (roomInfo[i].PlayerCount != 0){
+                    Debug.Log(roomInfo[i].Name + " : " + roomInfo[i].Name + "–" + roomInfo[i].PlayerCount + " / " + roomInfo[i].MaxPlayers /*+ roomInfo[i].CustomProperties["roomCreator"].ToString()*/);
+                    RoomElementPrefab = Resources.Load("RoomElement",  typeof(GameObject)) as GameObject;
+                    GameObject RoomElement = GameObject.Instantiate(RoomElementPrefab);
+                    RoomElement.transform.SetParent(RoomParent.transform);
+                    Debug.Log("GetRoomInfo in updater:" + roomInfo[i].Name);
+                    RoomElement.GetComponent<RoomElement>().SetRoomInfo(roomInfo[i].Name, roomInfo[i].PlayerCount, roomInfo[i].MaxPlayers, roomInfo[i].CustomProperties["RoomCreator"].ToString());
+                }  
             }
         }
         
