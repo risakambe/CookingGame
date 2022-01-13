@@ -169,6 +169,7 @@ public class ranking : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
+        PhotonNetwork.LocalPlayer.SetScore(0);
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
     }

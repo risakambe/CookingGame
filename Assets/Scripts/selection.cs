@@ -71,21 +71,40 @@ public class selection : MonoBehaviourPunCallbacks
         PhotonNetwork.LocalPlayer.SetScore(0);
         int correct_counter = 0;
         int total_ing_num = ingredients_ans.Count;
-        foreach (string ing in ingredients_ans){
-            if (ingredients_activation[ing] == true)
+
+        foreach (KeyValuePair<string, bool> item in ingredients_activation)
+        {
+            if (item.Value == true)
             {
-                correct_counter++;
+                if (ingredients_ans.Contains(item.Key)) {
+                    correct_counter++;
+                    Debug.Log("‚ ‚Á‚Ä‚¢‚é‚Æ‚«"+correct_counter.ToString());
+                }
+                else
+                {
+                    correct_counter--;
+                    Debug.Log("ŠÔˆá‚Á‚Ä‚¢‚é‚Ì‚ð‘I‚ñ‚¾Žž" + correct_counter.ToString());
+                }
+                
             }
-            else {
-                correct_counter--;
-            }
-            
+/*            else {
+                if (ingredients_ans.Contains(item.Key))
+                {
+                    correct_counter--;
+                    Debug.Log(correct_counter.ToString());
+                }
+            }*/     
+        }
+
+        if (correct_counter < 0) {
+            correct_counter = 0;
         }
         PhotonNetwork.LocalPlayer.AddScore(correct_counter);
         Debug.Log(correct_counter);
         //Debug.Log(correct_counter.ToString() + "/"+ total_ing_num.ToString());
         //Debug.Log(PhotonNetwork.LocalPlayer.GetScore().ToString());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("rankingScene");
         
     }
 }

@@ -64,7 +64,8 @@ public class LobbyUI : MonoBehaviour {
         roomOptions.MaxPlayers = (byte)PlayerNumberSlider.value;    //set maximum number of players
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable()
         {
-            { "RoomCreator",PhotonNetwork.NickName }
+            { "RoomCreator", PhotonNetwork.NickName },
+            { "MaxPlayer", (int)PlayerNumberSlider.value }
         };
         roomOptions.CustomRoomPropertiesForLobby = new string[] {
             "RoomCreator","PlayerState"

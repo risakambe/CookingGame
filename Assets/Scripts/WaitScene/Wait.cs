@@ -7,6 +7,7 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Wait : MonoBehaviourPunCallbacks
 {
@@ -23,6 +24,13 @@ public class Wait : MonoBehaviourPunCallbacks
     void Start()
     {
        
+    }
+
+    void Update()
+    {
+        int MaxPlayer = (int)PhotonNetwork.CurrentRoom.CustomProperties["MaxPlayer"];
+        if (MaxPlayer == PhotonNetwork.CurrentRoom.PlayerCount)
+        { startMainGame(); }
     }
     public void startMainGame(){
         SceneManager.LoadScene("Selection");
