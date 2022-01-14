@@ -6,25 +6,21 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class selection : MonoBehaviourPunCallbacks
 {
+    public FoodManager fm;
+    public string dish_name;
+    public List<string> ingredients_ans;
+    public List<int> scenes;
+
     int finalscores;
     private  EventSystem eventSystem;
-    private List<string> ingredients = new List<string> (){
-        "Salt","Pepper","Sugar","PotatoStarch","ChickenStockPowder","SoySauce",
-        "ChineseChiliBeanSauce","SesameOil","Milk",
-        "Water","Cabbage","ChineseCabbage","Carrot","Onion","Radish","GreenOnion",
-        "Egg","Tofu","Potato","Pampkin","Cucumber","Pork","Beef","Chicken",
-        "GroundBeef","GroundPork","Eggplant","BellPepper","Shrimp","Ginger","Rice"
-    };
-    private List<string> ingredients_ans = new List<string> (){
-        "Salt","Pepper",
-        "Egg","Chicken","Potato"
-    };
+    private List<string> ingredients;
     public Dictionary<string,bool> ingredients_activation = new Dictionary<string,bool>();
     public List<Button> ingredient_buttons = new List<Button> ();
+    public TextMeshProUGUI text_select;
 
     // Start is called before the first frame update
     void Awake(){
@@ -33,19 +29,21 @@ public class selection : MonoBehaviourPunCallbacks
     }
     void Start()
     { 
+        ingredients = fm.GetAllIngredients();
+        int room_dish_idx = (int)PhotonNetwork.CurrentRoom.CustomProperties["Dish"];
+        dish_name = fm.GetDishName(room_dish_idx);
+        ingredients_ans = fm.GetIngredientsAns(room_dish_idx);
+        scenes = fm.GetSceneList(room_dish_idx);
+        text_select.text = "Please select ingredients of "+dish_name;
+
         Button enter_button = this.transform.Find("EnterButton").gameObject.GetComponent<Button>();
         enter_button.onClick.AddListener(Select_enter_clicked); 
         foreach (string ing in ingredients){
             ingredients_activation.Add(ing,false); 
             Button ing_button = this.transform.Find("Scroll View/Viewport/Content/"+ing).gameObject.GetComponent<Button>();
-           
-            ing_button.onClick.AddListener(Button_clicked); 
-            
+            ing_button.onClick.AddListener(Button_clicked);
         }        
     }
-
-    
-
     // Update is called once per frame
     void Update()
     {
@@ -100,10 +98,14 @@ public class selection : MonoBehaviourPunCallbacks
         }
         PhotonNetwork.LocalPlayer.AddScore(correct_counter);
         Debug.Log(correct_counter);
+        int next_scene_idx = PhotonNetwork.LocalPlayer.GetNextSceneIdx();
+        PhotonNetwork.LocalPlayer.AddNextSceneIdx();
         //Debug.Log(correct_counter.ToString() + "/"+ total_ing_num.ToString());
         //Debug.Log(PhotonNetwork.LocalPlayer.GetScore().ToString());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        // SceneManager.LoadScene("rankingScene");
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int next_scene = scenes[next_scene_idx];
+        Debug.Log("next scene:" + next_scene.ToString());
+        SceneManager.LoadScene(next_scene);
         
     }
 }

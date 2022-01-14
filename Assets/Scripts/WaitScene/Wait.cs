@@ -21,6 +21,7 @@ public class Wait : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.LocalPlayer.SetScore(0);
         PhotonNetwork.LocalPlayer.ResetInLastScene();
+        PhotonNetwork.LocalPlayer.ResetNextSceneIdx();
         flag = true;
     }
 

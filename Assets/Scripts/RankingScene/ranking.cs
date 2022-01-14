@@ -174,6 +174,7 @@ public class ranking : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected) { 
             PhotonNetwork.LocalPlayer.SetScore(0);
             PhotonNetwork.LocalPlayer.ResetInLastScene();
+            PhotonNetwork.LocalPlayer.ResetNextSceneIdx();
             PhotonNetwork.Disconnect();
         }
         SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
