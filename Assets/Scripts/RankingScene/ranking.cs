@@ -26,6 +26,8 @@ public class ranking : MonoBehaviourPunCallbacks
     public Text name2;
     public Text name3;
     [SerializeField] GameObject messagePanel;
+    [SerializeField] GameObject ok_button;
+    [SerializeField] Canvas canvasConfirmationEndGame;
 
 
 
@@ -38,7 +40,7 @@ public class ranking : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        roomPlayerNumber = PhotonNetwork.CurrentRoom.PlayerCount;
+        roomPlayerNumber =(int)PhotonNetwork.CurrentRoom.CustomProperties["MaxPlayer"];
         GameObject canvas_obj = GameObject.Find("Canvas");
 
         // playerPrefab = Resources.Load("player", typeof(GameObject)) as GameObject;
@@ -48,11 +50,16 @@ public class ranking : MonoBehaviourPunCallbacks
         Debug.Log("entered!:"+PhotonNetwork.LocalPlayer.NickName);
         playerList = new Dictionary<string, int>();
         PhotonNetwork.LocalPlayer.SetInLastScene();
+        ok_button.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!PhotonNetwork.IsConnected) { 
+            Debug.Log("Not connected to Photon");
+            CustomLeaveRoom();
+            }
         if (flag){
             bool counterFlag = true;
             int currentMemberNum = 0;
@@ -69,40 +76,21 @@ public class ranking : MonoBehaviourPunCallbacks
             {
                 flag = false;
                 messagePanel.SetActive(false);
+                ok_button.SetActive(true);
                 rank();
             }
         }
         else{//what is this else is about?? it seems like the flag will always be true.
-            if (!PhotonNetwork.IsConnected) { 
-            Debug.Log("Not connected to Photon");
-            SceneManager.LoadScene("Launcher");
+            if (PhotonNetwork.CurrentRoom.PlayerCount != roomPlayerNumber)
+            {
+                CustomLeaveRoom();
             }
-
-            else{
-                bool counterFlag = true;
-                int currentMemberNum = 0;
-                foreach (var targetPlayer in PhotonNetwork.CurrentRoom.Players.Values)
-                {
-                    counterFlag = counterFlag && targetPlayer.GetInLastScene();
-                    if (counterFlag == false){
-                        break;
-                    }
-                    currentMemberNum++;
-                }
-                if (currentMemberNum != roomPlayerNumber)
-                {
-                    flag = false;
-                    PhotonNetwork.Disconnect();
-                    SceneManager.LoadScene("Launcher");
-                    // PhotonNetwork.LeaveRoom();
-                }
-            }
-            
         }
     }
 
     public void rank()
     {
+        Debug.Log("score in rank():"+PhotonNetwork.LocalPlayer.GetScore().ToString());
         List<int> scoreList = new List<int>();
         List<string> nameList = new List<string>();
         Debug.Log("we are in rank");
@@ -167,9 +155,32 @@ public class ranking : MonoBehaviourPunCallbacks
         
     }
 
+    // Yes ボタンと関連づけたイベントハンドラ関数
+    public void onButtonYes()
+    {
+        Debug.Log("Yes button is clicked!");  // ログを出力
+        CustomLeaveRoom();
+    }
+
+    // No ボタンと関連づけたイベントハンドラ関数
+    public void onButtonNo()
+    {
+        // Canvas を無効にする。(ダイアログを閉じる)
+        Debug.Log("No button is clicked!");
+        canvasConfirmationEndGame.enabled = false;
+    }
+
+    public void CustomLeaveRoom(){
+        if (PhotonNetwork.IsConnected) { 
+            PhotonNetwork.LocalPlayer.SetScore(0);
+            PhotonNetwork.LocalPlayer.ResetInLastScene();
+            PhotonNetwork.Disconnect();
+        }
+        SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
+    }
+
     public override void OnLeftRoom()
     {
-        PhotonNetwork.Disconnect();
-        SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
+        CustomLeaveRoom();
     }
 }

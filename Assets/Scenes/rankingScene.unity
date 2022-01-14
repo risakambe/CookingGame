@@ -592,7 +592,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 846191229}
-  - component: {fileID: 846191230}
   - component: {fileID: 846191231}
   m_Layer: 0
   m_Name: GameManager
@@ -615,19 +614,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &846191230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846191227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ad4bebe91414cea97cef607202d664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasConfirmationEndGame: {fileID: 378384334}
 --- !u!114 &846191231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +636,8 @@ MonoBehaviour:
   name2: {fileID: 391456925}
   name3: {fileID: 1573655731}
   messagePanel: {fileID: 773066272}
+  ok_button: {fileID: 1770580199}
+  canvasConfirmationEndGame: {fileID: 378384334}
 --- !u!1 &1062220720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1088,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1770580204}
+      objectReference: {fileID: 846191231}
     - target: {fileID: 2868157075626995959, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1109,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 2868157075626995959, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonTest, Assembly-CSharp
+      value: ranking, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2868157075873564441, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
@@ -1125,7 +1113,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1770580204}
+      objectReference: {fileID: 846191231}
     - target: {fileID: 2868157075873564441, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1139,7 +1127,7 @@ PrefabInstance:
     - target: {fileID: 2868157075873564441, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonTest, Assembly-CSharp
+      value: ranking, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2868157075873564441, guid: 3f086fe9c7f6d2d4394193466dd5aac4,
         type: 3}
