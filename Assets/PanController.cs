@@ -95,11 +95,11 @@ public class PanController : MonoBehaviour
         if (gyroEnabled&&gamehasstarted)
         {
           
-            pan.transform.Rotate(axis, gyro.rotationRate.z*1.3f);
+            pan.transform.Rotate(axis, gyro.rotationRate.z);
         }
         pan.transform.rotation = Quaternion.Euler(0, 0, ClampAngle(pan.transform.rotation.eulerAngles.z, 270, 360));
        
-        if (gyro.rotationRate.z >= 2&&canshake&&gamehasstarted)
+        if (gyro.rotationRate.z >= 2.5&&canshake&&gamehasstarted)
         {
             anim.SetTrigger("Jumping");
             canshake = false;

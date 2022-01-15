@@ -15,6 +15,7 @@ public class ShakeGameManager : MonoBehaviour
     public GameObject detector;
     public PhotonManager Pmanager;
     public FoodManager fmanager;
+    public bool gamehasended = false;
     [SerializeField]
     List<int> scenes;
     // Start is called before the first frame update
@@ -42,9 +43,11 @@ public class ShakeGameManager : MonoBehaviour
     }
     public void success()
     {
+        gamehasended = true;
         Pmanager.Endthegame();
         SuccessMenu.SetActive(true);
         detector.SetActive(false);
+        gamehasended = true;
     }
 
     public void endgame()
@@ -59,7 +62,10 @@ public class ShakeGameManager : MonoBehaviour
     }
     public void failgame()
     {
-        fail.SetActive(true);
+        if (gamehasended != true)
+        {
+            fail.SetActive(true);
+        }
     }
     public void Loadcurrentscene()
     {

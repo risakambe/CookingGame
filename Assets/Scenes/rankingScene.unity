@@ -631,7 +631,7 @@ MonoBehaviour:
   name3: {fileID: 1573655731}
   messagePanel: {fileID: 773066272}
   ok_button: {fileID: 1770580199}
-  canvasConfirmationEndGame: {fileID: 2868157076979734213}
+  canvasConfirmationEndGame: {fileID: 2868157076979734214}
 --- !u!1 &1062220720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ad4bebe91414cea97cef607202d664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasConfirmationEndGame: {fileID: 2868157076979734213}
+  canvasConfirmationEndGame: {fileID: 2868157076979734214}
 --- !u!1 &1953313130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2868157076979734215
 MonoBehaviour:
   m_ObjectHideFlags: 0

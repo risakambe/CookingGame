@@ -15,7 +15,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
     }
 
     // エディタのインスペクタで、この変数にヒエラルキーにある Canvas を割り当ててください。
-    public Canvas canvasConfirmationEndGame;
+    public GameObject canvasConfirmationEndGame;
 
     // Use this for initialization ここまでok
     void Start()
@@ -23,7 +23,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
         // ダイアログを表示するときまで、 Canvas を無効にしておく。
         if (canvasConfirmationEndGame != null)
         {
-            canvasConfirmationEndGame.enabled = false;
+            canvasConfirmationEndGame.SetActive(false);
         }
     }
 
@@ -40,7 +40,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
         // Canvas を有効にする
         if (canvasConfirmationEndGame != null)
         {
-            canvasConfirmationEndGame.enabled = true;
+            canvasConfirmationEndGame.SetActive(true);
         }
     }
 
@@ -60,7 +60,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
     public void onButtonNo()
     {
         // Canvas を無効にする。(ダイアログを閉じる)
-        canvasConfirmationEndGame.enabled = false;
+        canvasConfirmationEndGame.SetActive(false);
     }
 
     public override void OnLeftRoom()

@@ -572,8 +572,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press to Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d, type: 2}
+  m_sharedMaterial: {fileID: -2390775146617106686, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1520,10 +1521,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Keep your phone vertically \nat fist"
+  m_text: 'Keep your phone
+
+    in portrait mode
+
+    at fist'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d, type: 2}
+  m_sharedMaterial: {fileID: -2390775146617106686, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1824,8 +1830,9 @@ MonoBehaviour:
 
     as fast as possible'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d, type: 2}
+  m_sharedMaterial: {fileID: -2390775146617106686, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2482,8 +2489,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Please
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d, type: 2}
+  m_sharedMaterial: {fileID: -2390775146617106686, guid: 2c8a0b7a8e54c0a4e9fdb9967e8fa77d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3012,6 +3020,7 @@ MonoBehaviour:
   detector: {fileID: 4544453968268643538}
   Pmanager: {fileID: 1817973395}
   fmanager: {fileID: 780784698}
+  gamehasended: 0
   scenes: 
 --- !u!4 &7048926888080103356
 Transform:

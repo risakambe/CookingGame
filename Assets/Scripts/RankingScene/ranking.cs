@@ -27,7 +27,7 @@ public class ranking : MonoBehaviourPunCallbacks
     public Text name3;
     [SerializeField] GameObject messagePanel;
     [SerializeField] GameObject ok_button;
-    [SerializeField] Canvas canvasConfirmationEndGame;
+    [SerializeField] GameObject canvasConfirmationEndGame;
 
 
 
@@ -167,7 +167,7 @@ public class ranking : MonoBehaviourPunCallbacks
     {
         // Canvas を無効にする。(ダイアログを閉じる)
         Debug.Log("No button is clicked!");
-        canvasConfirmationEndGame.enabled = false;
+        canvasConfirmationEndGame.SetActive(false);
     }
 
     public void CustomLeaveRoom(){
