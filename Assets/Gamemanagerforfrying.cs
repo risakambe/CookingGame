@@ -23,6 +23,7 @@ public class Gamemanagerforfrying : MonoBehaviour
         controller.gamehasstarted = true;
         beginUI.SetActive(false);
         pmanager.Startthegame();
+        FindObjectOfType<AudioManager>().PlayBackgorund(1);
 
     }
 }

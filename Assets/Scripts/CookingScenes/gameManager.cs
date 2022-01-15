@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
-
+using System.Collections.Generic;
 
 
 public class gameManager : MonoBehaviour
@@ -15,6 +15,9 @@ public class gameManager : MonoBehaviour
     public GameObject[] peeledpotatoes;
     public GameObject[] toDestroy;
     public PhotonManager pmanager;
+    public FoodManager fmanager;
+    [SerializeField]
+    List<int> scenes;
     [SerializeField]
     int scores;
     // Start is called before the first frame update
@@ -36,6 +39,8 @@ public class gameManager : MonoBehaviour
         StartMenu.SetActive(false);
         Time.timeScale = 1f;
         GameisPaused = false;
+        int room_dish_idx = (int)PhotonNetwork.CurrentRoom.CustomProperties["Dish"];
+        scenes = fmanager.GetSceneList(room_dish_idx);
     }
 
     public void finish(int counter)
@@ -70,7 +75,12 @@ public class gameManager : MonoBehaviour
     }
     void loadnextscene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        int next_scene_idx = PhotonNetwork.LocalPlayer.GetNextSceneIdx();
+        PhotonNetwork.LocalPlayer.AddNextSceneIdx();
+        int next_scene = scenes[next_scene_idx];
+        Debug.Log("next scene:" + next_scene.ToString());
+        SceneManager.LoadScene(next_scene);
     }
 
 }

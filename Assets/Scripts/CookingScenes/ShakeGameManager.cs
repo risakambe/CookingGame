@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class ShakeGameManager : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class ShakeGameManager : MonoBehaviour
     public GameObject fail;
     public GameObject detector;
     public PhotonManager Pmanager;
+    public FoodManager fmanager;
+    [SerializeField]
+    List<int> scenes;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,8 @@ public class ShakeGameManager : MonoBehaviour
         StartMenu.SetActive(false);
         Time.timeScale = 1f;
         GameisPaused = false;
+        //int room_dish_idx = (int)PhotonNetwork.CurrentRoom.CustomProperties["Dish"];
+        //scenes = fmanager.GetSceneList(room_dish_idx);
 
     }
     public void success()
@@ -42,7 +49,13 @@ public class ShakeGameManager : MonoBehaviour
 
     public void endgame()
     {
-       SceneManager .LoadScene (SceneManager .GetActiveScene().buildIndex +1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        //int next_scene_idx = PhotonNetwork.LocalPlayer.GetNextSceneIdx();
+        //PhotonNetwork.LocalPlayer.AddNextSceneIdx();
+        //int next_scene = scenes[next_scene_idx];
+        //Debug.Log("next scene:" + next_scene.ToString());
+        //SceneManager.LoadScene(next_scene);
+        
     }
     public void failgame()
     {

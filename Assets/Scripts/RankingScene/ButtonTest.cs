@@ -15,7 +15,7 @@ public class ButtonTest : MonoBehaviourPunCallbacks
     }
 
     // エディタのインスペクタで、この変数にヒエラルキーにある Canvas を割り当ててください。
-    public Canvas canvasConfirmationEndGame = null;
+    public Canvas canvasConfirmationEndGame;
 
     // Use this for initialization ここまでok
     void Start()

@@ -593,7 +593,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &806047777
+--- !u!1 &620281316
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -601,37 +601,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 806047779}
-  - component: {fileID: 806047778}
+  - component: {fileID: 620281318}
+  - component: {fileID: 620281317}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &806047778
+--- !u!114 &620281317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806047777}
+  m_GameObject: {fileID: 620281316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad55867e54679e0469b2ec8d37a87809, type: 3}
+  m_Script: {fileID: 11500000, guid: afe0dd1d20605a648bd385fe2502e7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scores: 0
---- !u!4 &806047779
+  music:
+  - {fileID: 8300000, guid: 5e6e78176e6462745916645e2bbafc97, type: 3}
+  - {fileID: 8300000, guid: d2fe8a8591c7ac7468c7221b952d7f5f, type: 3}
+  - {fileID: 8300000, guid: 64f27148a5aa0144383d616d21b1f7d7, type: 3}
+  - {fileID: 8300000, guid: 95f511a79d12acb45b718bbdd6b056e2, type: 3}
+  - {fileID: 8300000, guid: d3f2b6c6a8745134fb47170fb3c29363, type: 3}
+  - {fileID: 8300000, guid: 727b3e7168fc65b4bab32ffba739df72, type: 3}
+  BackGroundMusic: {fileID: 0}
+  BackGroundMusic1: {fileID: 0}
+  soundeffect: {fileID: 0}
+--- !u!4 &620281318
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806047777}
+  m_GameObject: {fileID: 620281316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1136.2339, y: 396.0192, z: -842.67676}
+  m_LocalPosition: {x: -103.24512, y: -59.625793, z: 350.02765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -912,6 +921,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 620281317}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySoundeffect
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -56,6 +56,7 @@ public class CutDetector : MonoBehaviour
         if (-Input.acceleration.y > 4&&Time.unscaledTime >= TimeSinceLastTime + minPeelInterval&& counter < slices.Length - 1&&isCutting)
         {
             Vibration.Vibrate(500);
+            FindObjectOfType<AudioManager>().PlaySoundeffect(3);
             
             slices[counter].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             slices[counter].GetComponent<Rigidbody2D>().gravityScale = 3;

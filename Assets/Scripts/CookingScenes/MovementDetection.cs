@@ -15,10 +15,12 @@ public class MovementDetection : MonoBehaviour
         if (Input.acceleration.y >= peelDetectionThreshhold &&
              Time.unscaledTime >= TimeSinceLastTime + minPeelInterval&&gamemanager.GameisPaused == false)
         {
+            FindObjectOfType<AudioManager>().PlaySoundeffect(5);
             Debug.Log(Input.acceleration.y);
             Vibration.Vibrate(500);
             mask.transform.Translate(2, 0, 0);
             TimeSinceLastTime = Time.unscaledTime;
+            
         }
     }
 }

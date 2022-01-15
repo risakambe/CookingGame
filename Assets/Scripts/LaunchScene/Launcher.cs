@@ -3,9 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
- 
+using System.Collections;
+using System.Collections.Generic;
+
 public class Launcher : MonoBehaviourPunCallbacks
 {
+    
 
     void Start(){
         Button play_button = this.transform.Find("PlayButton").gameObject.GetComponent<Button>();
@@ -31,6 +34,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         //output login status on GUI
         GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
     }
+    
 
 
     // //Auto-JoinLobbyにチェックを入れているとPhotonに接続後OnJoinLobby()が呼ばれる。

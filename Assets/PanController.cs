@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class PanController : MonoBehaviour
 {
@@ -20,12 +22,16 @@ public class PanController : MonoBehaviour
     public bool gamehasstarted = false;
     public GameObject successUI;
     public PhotonManager Pmanager;
+    public FoodManager fmanager;
+    [SerializeField]
+    List<int> scenes;
     // Start is called before the first frame update
     void Start()
     {
         gyroEnabled = EnableGyro();
         pan.transform.rotation = Quaternion.Euler(0, 0, 0);
-        
+        //int room_dish_idx = (int)PhotonNetwork.CurrentRoom.CustomProperties["Dish"];
+        //scenes = fmanager.GetSceneList(room_dish_idx);
 
     }
     private bool EnableGyro()
@@ -51,7 +57,13 @@ public class PanController : MonoBehaviour
 
     public void Loadnextscene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //int next_scene_idx = PhotonNetwork.LocalPlayer.GetNextSceneIdx();
+        //PhotonNetwork.LocalPlayer.AddNextSceneIdx();
+        //int next_scene = scenes[next_scene_idx];
+        //Debug.Log("next scene:" + next_scene.ToString());
+        //SceneManager.LoadScene(next_scene);
+        SceneManager.LoadScene(14);
     }
 
     public static float ClampAngle (float angle, float min, float max)
@@ -83,7 +95,7 @@ public class PanController : MonoBehaviour
         if (gyroEnabled&&gamehasstarted)
         {
           
-            pan.transform.Rotate(axis, gyro.rotationRate.z);
+            pan.transform.Rotate(axis, gyro.rotationRate.z*1.3f);
         }
         pan.transform.rotation = Quaternion.Euler(0, 0, ClampAngle(pan.transform.rotation.eulerAngles.z, 270, 360));
        

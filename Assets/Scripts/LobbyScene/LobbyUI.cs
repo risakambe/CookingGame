@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -17,7 +18,9 @@ public class LobbyUI : MonoBehaviour {
     private GameObject ScrollView;
     private GameObject LobbyTitle;
     private Button BackToArrayButton;
-	
+    private int dish_param = 0;
+
+
     void Start(){
         OpenRoomPanelButton = this.transform.Find("OpenRoomPanelButton").gameObject.GetComponent<Button>();
         OpenRoomPanelButton.onClick.AddListener(OnClick_OpenRoomPanelButton);
@@ -58,6 +61,16 @@ public class LobbyUI : MonoBehaviour {
     public void OnClick_CreateRoomButton()
     {
         print("created room name :"+RoomNameText.text);
+        int temnumber = UnityEngine.Random.Range(0, 100);
+        if (temnumber <= 50)
+        {
+            dish_param = 0;
+        }
+        else
+        {
+            dish_param = 1;
+        }
+        print("dish param:"+dish_param.ToString());
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.IsVisible = true;   //visible from lobby
         roomOptions.IsOpen = true;      //accept other players
@@ -65,7 +78,8 @@ public class LobbyUI : MonoBehaviour {
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable()
         {
             { "RoomCreator", PhotonNetwork.NickName },
-            { "MaxPlayer", (int)PlayerNumberSlider.value }
+            { "MaxPlayer", (int)PlayerNumberSlider.value },
+            { "Dish", dish_param }
         };
         roomOptions.CustomRoomPropertiesForLobby = new string[] {
             "RoomCreator","PlayerState"

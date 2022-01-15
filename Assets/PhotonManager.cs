@@ -30,6 +30,7 @@ public class PhotonManager : MonoBehaviour
     }
     public void Endthegame()
     {
+        FindObjectOfType<AudioManager>().StopPlayingBackground(1);
         gameisruning = false;
         scores = 100-(int)counter / 3;
         PhotonNetwork.LocalPlayer.AddScore(scores);
