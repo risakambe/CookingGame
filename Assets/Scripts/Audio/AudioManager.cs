@@ -58,8 +58,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundeffect(int idx)
     {
+        
         soundeffect = gameObject.AddComponent<AudioSource>();
         soundeffect.clip = music[idx];
+        if (music[idx].name == "SFX_UIConfirm")
+        {
+            soundeffect.volume = 0.3f;
+        }
+       
+       
         soundeffect.Play();
     }
     public void StopPlaySoundeffect()

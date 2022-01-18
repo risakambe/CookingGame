@@ -54,6 +54,7 @@ public class RoastChickenManager : MonoBehaviour
     {
         pmanager.ResetTheCounter();
         FailMenu.SetActive(true);
+        FindObjectOfType<AudioManager>().StopPlaySoundeffect();
     }
 
     

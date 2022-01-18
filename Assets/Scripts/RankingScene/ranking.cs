@@ -25,6 +25,7 @@ public class ranking : MonoBehaviourPunCallbacks
     public Text name1;
     public Text name2;
     public Text name3;
+    public GameObject UIwhendisconnected;
     [SerializeField] GameObject messagePanel;
     [SerializeField] GameObject ok_button;
     [SerializeField] GameObject canvasConfirmationEndGame;
@@ -176,10 +177,24 @@ public class ranking : MonoBehaviourPunCallbacks
             PhotonNetwork.LocalPlayer.ResetInLastScene();
             PhotonNetwork.LocalPlayer.ResetNextSceneIdx();
             PhotonNetwork.Disconnect();
+            SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
         }
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.LocalPlayer.SetScore(0);
+            PhotonNetwork.LocalPlayer.ResetInLastScene();
+            PhotonNetwork.LocalPlayer.ResetNextSceneIdx();
+            PhotonNetwork.Disconnect();
+            messagePanel.SetActive(false);
+            UIwhendisconnected.SetActive(true);
+        }
+        
+    }
+    public void ResetGame()
+    {
         SceneManager.LoadScene("Launcher"); //一番初めの画面へ戻る
     }
-
+    
     public override void OnLeftRoom()
     {
         CustomLeaveRoom();
